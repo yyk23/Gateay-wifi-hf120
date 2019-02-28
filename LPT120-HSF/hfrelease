@@ -1,0 +1,92 @@
+#match svn v546
+#for HF
+#make sure ssv6060 can be make success before run script
+
+cd examples/ssv6060
+make
+cd ..
+cd ..
+
+#delete cabrio source code
+#find ./cpu/cabrio-e/ -type f -name "*.c" -exec rm -rf {} \;
+#find ./platform/cabrio-e/ -type f -name "*.c" -exec rm -rf {} \;
+#find ./core/net/ieee80211_bss/ -type f -name "*.c" -exec rm -rf {} \;
+
+#rm -f ./core/net/ieee80211_bss/airkiss.c
+rm -f ./core/net/ieee80211_bss/crypthw.c
+rm -f ./core/net/ieee80211_bss/EAPOL.c
+rm -f ./core/net/ieee80211_bss/ieee80211_mac.c
+rm -f ./core/net/ieee80211_bss/ieee80211_main.c
+rm -f ./core/net/ieee80211_bss/ieee80211_mgmt.c
+rm -f ./core/net/ieee80211_bss/ieee80211_net.c
+rm -f ./core/net/ieee80211_bss/ieee80211_rdc.c
+rm -f ./core/net/ieee80211_bss/rate_control.c
+rm -f ./core/net/ieee80211_bss/smartComm.c
+#rm -f ./core/net/ieee80211_bss/smartConf.c
+rm -f ./core/net/ieee80211_bss/soft_ap.c
+rm -f ./core/net/ieee80211_bss/ssid_recv.c
+rm -f ./core/net/ieee80211_bss/wep.c
+rm -f ./core/net/ieee80211_bss/wpa.c
+rm -f ./core/net/ieee80211_bss/wpa_ccmp.c
+rm -f ./core/net/ieee80211_bss/wpa_tkip.c
+
+rm -f ./platform/cabrio-e/clock.c
+#rm -f ./platform/cabrio-e/contiki-main.c
+rm -f ./platform/cabrio-e/fence.c
+
+rm -f ./cpu/cabrio-e/bsp/bsp.c
+rm -f ./cpu/cabrio-e/bsp/cpu.c
+rm -f ./cpu/cabrio-e/drv_phy.c
+rm -f ./cpu/cabrio-e/fence/drv_fence.c
+rm -f ./cpu/cabrio-e/hw_init.c
+rm -f ./cpu/cabrio-e/hw_regs_api.c
+rm -f ./cpu/cabrio-e/drv_mac.c
+rm -f ./cpu/cabrio-e/mbox/drv_mbox.c
+rm -f ./cpu/cabrio-e/packetbuffer/drv_pktbuf.c
+rm -f ./cpu/cabrio-e/radio/ssvradio.c
+rm -f ./cpu/cabrio-e/ssv6200_rx.c
+rm -f ./cpu/cabrio-e/ssv6200_tx.c
+
+if [ -d ./obj_ssv ]; then
+	echo "folder is exist"
+else
+	mkdir ./obj_ssv
+fi
+
+cp ./examples/ssv6060/obj_cabrio-e/airkiss.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/crypthw.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/EAPOL.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ieee80211_mac.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ieee80211_main.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ieee80211_mgmt.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ieee80211_net.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ieee80211_rdc.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/rate_control.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/smartComm.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/smartConf.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/soft_ap.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ssid_recv.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/wep.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/wpa.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/wpa_ccmp.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/wpa_tkip.o ./obj_ssv
+
+cp ./examples/ssv6060/obj_cabrio-e/clock.o ./obj_ssv
+#cp ./examples/ssv6060/obj_cabrio-e/contiki-main.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/fence.o ./obj_ssv
+
+cp ./examples/ssv6060/obj_cabrio-e/bsp.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/cpu.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/drv_phy.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/drv_fence.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/hw_init.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/hw_regs_api.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/drv_mac.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/drv_mbox.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/drv_pktbuf.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ssvradio.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ssv6200_rx.o ./obj_ssv
+cp ./examples/ssv6060/obj_cabrio-e/ssv6200_tx.o ./obj_ssv
+
+
+

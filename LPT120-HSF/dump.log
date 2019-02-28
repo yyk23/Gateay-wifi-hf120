@@ -1,0 +1,47 @@
+
+lpt120-main.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 startup       00000190  03000000  03000000  00008000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 prog_in_flash 0004a5c0  03004000  03004000  00014000  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 prog_in_sram  00014af8  02000000  0304e5c0  00060000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .ARM          00000008  02014af8  030630b8  00074af8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .data         00001040  02014b00  030630c0  00074b00  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss          00008c90  02015b40  03064100  00075b40  2**4
+                  ALLOC
+  6 boot_in_sram  00001820  02029000  03000190  00009000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  7 .boot_data    00000010  0202c000  030019b0  0000c000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  8 .boot_bss     00001540  0202c010  030019c0  0000c010  2**2
+                  ALLOC
+  9 .ARM.attributes 0000002c  00000000  00000000  00075b40  2**0
+                  CONTENTS, READONLY
+ 10 .debug_line   000203da  00000000  00000000  00075b6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_info   00099fb4  00000000  00000000  00095f46  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_abbrev 00018db3  00000000  00000000  0012fefa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_aranges 000043c0  00000000  00000000  00148cb0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_ranges 00005118  00000000  00000000  0014d070  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_loc    00038505  00000000  00000000  00152188  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_str    00013f9b  00000000  00000000  0018a68d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .comment      000000e0  00000000  00000000  0019e628  2**0
+                  CONTENTS, READONLY
+ 18 .debug_frame  0000c540  00000000  00000000  0019e708  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 19 .stab         0000009c  00000000  00000000  001aac48  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 20 .stabstr      0000014d  00000000  00000000  001aace4  2**0
+                  CONTENTS, READONLY, DEBUGGING

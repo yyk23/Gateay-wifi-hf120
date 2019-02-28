@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "hsf.h": "c",
+        "hfsys.h": "c",
+        "hfat.h": "c",
+        "hftypes.h": "c",
+        "rclplatform.h": "c",
+        "cjson.h": "c",
+        "md5sum.h": "c",
+        "limits.h": "c",
+        "des.h": "c",
+        "hm_system.h": "c",
+        "log.h": "c",
+        "rclutils.h": "c",
+        "hfsniffer.h": "c",
+        "hm_parameter.h": "c",
+        "c_types.h": "c",
+        "hm_test.h": "c",
+        "hm_user_config.h": "c",
+        "hm_app_main.h": "c",
+        "hm_connect_cloud_handle.h": "c",
+        "md5.h": "c"
+    }
+}

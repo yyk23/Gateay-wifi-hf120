@@ -1,0 +1,246 @@
+v2.0.10-8版本修改内容2018-06-11：
+1、修复AP模式下UDP Server无效。
+2、解决魅族部分手机Smartlink配网的问题。
+3、解决连接mac电脑热点拿不到ip地址问题。
+4、添加机智云patch：修复机智云多个socket数据发错问题；
+5、socket支持最大链接数目，由5扩展到7.
+6、增加smartlink v3 密码中通过分割符 包含用户自定义信息 使能API hfsmtlk_enable_uinfo_in_password;
+7、配网成功之后添加组播上报配网成功状态。
+8、增加Smartlink扫描信道时间。
+9、修复部分服务器在建立ssl连接时证书校验出错的问题。
+10、修改配网之后连接路由器慢的问题。
+11、减小tcpic线程时钟频率，提升数据发送能力。
+
+
+v2.0.10-5版本修改内容2017-12-15：
+1、解决连接苹果airport路由器，获取不到IP地址的问题。
+2、解决Smartlink、Airkiss配网连接苹果手机热点，模块获取不到IP地址的问题。
+3、解决DNS域名请求部分路由器可能不转发问题，ID采用随机数。
+4、提升数据收发效率
+
+
+v2.0.10-5 Version 2017-12-15：
+1.Fix fail to get IP from Apple Airport router.
+2.Fix fail to get IP from IOS phone Wi-Fi hotpot when Smartlink or Airkiss.
+3.Fix sometimes DNS fail, ID use random value.
+4.Speed up data rate.
+
+
+
+v2.0.09-8版本修改内容2017-04-14：
+ 1.解决模块AP模式下DHCP偶尔异常问题，导致终端设备分配不到ip.
+ 2,解决soft reset软重启会卡死问题(仅2.09-6版本有此问题)。
+ 3,httpd网页升级不重启问题;
+ 4.优化DHCP,解决有的路由器 dhcp bootp flags为 broadcast的时候拿不到ip问题，先改为Unicast.
+ 5.单主域名服务器拿不到地址的时候，采用辅助 DNS
+ 6.增加SIP120芯片GPIO25 26 27 控制
+ 7.更新SIP120固件nReady引脚到GPIO18
+
+
+v2.0.09-8 Version 2017-04-14：
+ 1.Fix module AP mode dhcp server Bug which cause STA fail to get IP.
+ 2,Fix soft Reset cause module not work problem(only 2.09-6 version has this problem).
+ 3,Webpage upgrade applicaton and webapge file  need reboot manually before upgrade valid problem， now it will auto reboot.
+ 4.Optimize DHCP client to get IP address
+ 5.Suuprt backup DNS to get IP from dns
+ 6.Add SIP120 chip SDK GPIO25 26 27 control
+ 7.Update SIP120 firmware nReady to GPIO18
+
+
+
+v2.0.09-6版本修改内容2016-12-05
+1.增加Web Server功能，
+登录模块IP/iweb.html加载webpage.html文件升级网页后重启，默认登录名admin,admin，可用AT+WEBU进行修改。
+输入模块IP进入配置页面。
+2.增加对SIP120，LPT120G的支持
+3.解决部分路由器连接后，DHCP拿不到地址的问题
+4.优化smarklink V7,提高兼容性
+5.修复http_download_file函数超时及内存泄漏问题
+6.解决AT+UPURL命令失败后，再次发送命令失败问题
+7.增加smartlink回调函数，方便用户定制
+8.默认关闭Debug Uart1，配置成GPIO模式，需要使用debug信息输出功能的话，通讯串口输入AT+NDBGL=1,1指令启用debug功能；
+
+v2.0.09-6 Version 2016-12-05
+1.Add Web Server function.
+login with module’s IP/iweb.html to load webpage.html file and reboot after upgrade. The deaulf login account&pass:admin,admin, it can be modified by AT+WEBU.
+input module IP to open the webpage.
+2.Add support for SIP120，LPT120G.
+3.fix bug for DHCP fail with some router.
+4.Optimize smarklink V7.
+5.Fix http_download_file API RAM leakage.
+6.Fix AT+UPURL always fail when first fail to upgrade.
+7.Add smartlink callback.
+8.Default Close Debug Uart1, configure it as GPIO. If need to enable debug1 information output, input AT+NDBGL=1,1 with UART0.
+
+v2.0.08-6版本修改内容2016-10-28
+1. 支持模块上用的GD，KH硬件Flash型号，之前版本仅支持boya Flash
+后续模块内Flash型号有多种型号，以前开发的程序不能运行在GD和KH的Flash型号上，需更新到此版本。
+
+v2.0.08-6版本修改内容：2016-10-28
+1. Support the module internal GD,KH Flash Type, the previous version only support boya Flash.
+We will use different Flash brand for our module, the previous version software only support boya flash, the module will stop running if the flash brand does not consist.
+must upgrade to this version to support new GD/KH Flash type.
+
+
+v2.0.08-5版本修改内容
+解决Bug:
+1. 解决AT+TCPTO设置参数为0时报错Bug
+2. 解决AT+SMTLK命令没有回复+ok
+3. http_download_file超时不报失败 
+4. AT+WSCAN 扫描时wifi可能出于关闭状态获取不到结果
+5. AT+TCPTO,AT+TCPTOB TCP连接超时不准
+新增加功能
+1. AT+BVER查询boot版本号
+2. bootloader中B选项支持擦除配置信息，boot版本号1.14才支持此功能。
+3. AT+WRMID支持设置为空
+4. TCP发送支持多包缓存
+优化功能
+1. 在密码设置错误或者路由器不存在的时候模块的功耗;
+2. 在低功耗模式下,UDP包丢失问题;
+
+v2.0.08-5版本修改内容：
+Fix the following
+1. Fix the AT+TCPTO=0 return error bug.
+2. Fix the AT+SMTLK command no return bug.
+3. Fix http_download_file API timeout no error bug.
+4. Fix the AT+WSCAN no result when wifi is in sleep mode.
+5. Fix the AT+TCPTO/AT+TCPTOB timeout count not accurate .
+Add feature
+1. Add AT+BVER
+2. Add bootloader press B to clear the setting, boot 1.14 support this.
+3. AT+WRMID support null value.
+4. TCP send support multiple packet buffer.
+Optimize
+1. Optimize power consumption when module work in STA and no AP exist.
+2. Optimize the UDP packet sometimes lost when in default powser save mode(AT+DISPS=auto,3)
+
+
+
+v2.0.07-3版本修改内容：
+1,优化系统的运行速度
+2,增加MCU OTA相关函数，打包UPGRADE文件时包含MCU OTA文件
+3,修改升级默认配置，成功后恢复出厂设置
+4,解决SDK中close TCP时出现回调出错的问题
+5,AT+UPURL命令兼容LPB100
+6,添加get_user_default_rf_table API
+7,优化hfsys_get_time函数
+8,在修改AT命令最大长度时，将几个char型的变量给位int型。防止AT命令最大buff变化时出现程序卡死的现象
+9,解决smartlink v7在一个路由器有多个ssid情况下配网出错的问题
+10,增大透传buffer
+11,flash增加block(64KB) erase
+12,自动升级擦除升级区，改用block erase
+
+v2.0.07-3版本修改内容：
+1,Optimize the OS running
+2,Add MCU OTA API function for SDK usage.
+3,Support mass upgrade the config via HFUpdate tools
+4,Fix the TCP close problem in SDK develop.
+5,Support AT+UPURL to compatilbe with LPB100
+6,Add get_user_default_rf_table for SDK usage.
+7,Optimize the hfsys_get_time function
+8,Modify the maximum AT command length.
+9,Fix the Smartlink config problem when one router has a guest SSID with the main SSID(multiple SSID)
+10,Add buffer for Throughput mode.
+11,Add block erase for flash.
+12,use block erase for module OTA upgrade.
+
+
+V2.0.06
+1,修改boot.s,解决160K,192KB RAM不兼容问题；
+2,增加低功耗自动模式，当有数据发送或者接收到数据的时候，不马上进入低功耗，如果一段时间内没有收发数据再进入低功耗；
+3, 低功耗默认为自动
+4, tcp 增强发送效率；
+5, wep 加密模式下配网卡死问题
+6,增加AT+UPURL升级命令。
+7,避免内存泄漏导致看门狗不起作用的问题
+
+V2.0.06
+1,Modify boot.s, fix compatable problem when boot is below 1.12 for 160KB ram.
+2,Add AT+DISPS auto mode, enter power save mode when some time does not receive data.
+3,AT+DISPS default to auto
+4,Optimize tcp send data
+5,Fix smartlink sometimes stuck when router is WEP encryption.
+6,Add AT+UPURL to upgrade.
+7,Add hardware watchdog.
+
+V2.0.05-05
+1.    支持连接隐藏SSID
+2.    SDRAM增加32 KB （需要升级boot v1.12)
+3.    优化DHCPC，提高IP获取速度
+4.    DCDC模式使能调整，解决启动功耗高的问题
+5.    增加SSL API加载证书功能
+6.    SSL增加缓存机制，解决连续SSL发送数据有时会发送错误的问题
+7.    解决hfnet_tcp_listen后accept_callback异常问题
+8.    将部分会频繁调用的系统函数和AT命令代码放入SDRAM中，加快代码执行速度
+9.    解决airkiss的时候，模块卡死问题
+10.    增加LPB125工程；
+11.    解决hffile_userbin_write 接口出错问题;
+12.    增加socketa,socketb 断开连上回调事情；
+13.    解决socketa做server的时候，超时断开，串口发送的数据tcp client不能接收到问题
+14.    Debug串口在非debug模式也支持AT命令;
+15.    添加支持升级配置文件;
+16.    printf函数在NDBGL级别小于6才打印;
+
+V2.0.05-05 Version
+1.Support connect to hide SSID.
+2.Add ram to 192KB（need to update the bootloader to 1.12）
+3.Optimize the DHCP, module get IP more fast.
+4、Fix high power comsumption when DCDC mode is enable(Only support for LPB120)
+5.    Add API for SSL to load certificate
+6.    Add SSL buffer, Fix bugs when continues sending data with SSL
+7.    Fix not entering accept_callback when hfnet_tcp_listen 
+8.Optimize the code execution time, put some code in RAM to execute
+9.Fix module break when sometimes in airkiss.
+10.Fix AT+NETP works as TCP server and TCP client fail to receive data
+11.Support Debug UART AT command.
+12.Support HFUpdate tools to upgrade config files.
+13.    Add socketa,socketb callback when break and connet event；
+
+
+
+V2.0.04-6
+1.支持双SOCKET（socketa+socketb）同时工作，更新AT+NETP命令
+2.支持SSL
+3.解决与部分路由器的连接兼容性问题
+4.解决smartlink回调问题，smartlink连接隐藏路由器问题
+5.优化DHCP连接速度
+6.添加看门狗，模块卡死自动重启
+7.支持4路Station问题，AT+WAPMXSTA，默认支持1路STA.
+8.内存使用优化
+
+
+V2.0.04-6
+1.Support （socketa+socketb），Update AT+NETP command
+2.Support SSL(Use SDK to do this)
+3.Fix some compatiblity problem with router
+4.Fix Smartlink configure with hidden router SSID
+5.Optimize DHCP
+6.Add watchdog to reboot when works abnormal.
+7.Support 4 channel STA，AT+WAPMXSTA， default 1 channel
+8.Optimize RAM usage
+
+
+v2.03-4
+本次修改的内容如下：
+1,支持AT+DCDC命令，低功耗板切换到DCDCmode（DCDC仅支持LPB120硬件V2.0以上版本）
+2,透传同时支持socketb和socketa
+3,采用新的wifi库，解决长距离问题
+4,bug#724,softap支持 wpa2psk/aes加密
+5,优化写配置速度,可加快启动及升级速度
+6,支持sockeb tcp和udp,以及相关的AT命令 AT+TCPLKB,AT+TCPTOB,AT+TCPDISB
+7,当uart1做gpio使用的时候，上电不初始化uart1;
+8,域名解析bug;
+9,配置增加备份；
+10,增加 hfsys_nvm_read/write API函数;
+11,bug#729,AT+TCPDISB设置命令,on/off跟LPB100中的作用相反
+12,bug#725,HSF工程下,透传模式下的数据不能进入串口回调
+13,新支持以下AT命令,AT+WALK,AT+WALKIND,AT+E,AT+NETP,AT+ASWD
+
+v2.02-2:
+#670 LPB120平台支持timer相关函数
+#668 airkiss2.0配网成功后,AT+WSKEY查询加密参数与实际不符
+#663 有debug口会打印failCount错误模块卡死的情况
+#650 [SDK] 增加TCP Server下关闭某个子连接的API函数
+#649 [SDK] 解决TCP Client本地端口每次启动一样的问题
+#648 串口相关函数问题
+#616 MC300支持Airkiss 2.0
